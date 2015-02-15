@@ -2,6 +2,12 @@
 
 using namespace std;
 
+struct FRACTION {
+    int numerator;
+    int denominator;
+};
+
+
 int gcd(int u, int v)
 {
         int t;
@@ -11,7 +17,6 @@ int gcd(int u, int v)
             {
                 t = u; u = v; v = t;
             }
-            //u = u - v;
             u = u % v;
         }
         return v;
@@ -19,8 +24,14 @@ int gcd(int u, int v)
 
 main()
 {
-    int x, y;
-    while(cin >> x && cin >> y)
-        if(x > 0 && y > 0)
-            cout << x << ' ' << y << ' ' << gcd(x,y) << '\n';
+    FRACTION fraction;
+    cout << "Please enter the numerator then the denominator" << '\n';
+    while(cin >> fraction.numerator && cin >> fraction.denominator)
+        if(fraction.numerator > 0 && fraction.denominator > 0)
+            {
+                int div = gcd(fraction.numerator, fraction.denominator);
+                fraction.numerator = fraction.numerator/div;
+                fraction.denominator = fraction.denominator/div;
+                cout << fraction.numerator << '/' << fraction.denominator << '\n';
+            }
 }
