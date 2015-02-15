@@ -11,7 +11,8 @@ int gcd(int u, int v)
             {
                 t = u; u = v; v = t;
             }
-            u = u - v;
+            //u = u - v;
+            u = u % v;
         }
         return v;
 }
